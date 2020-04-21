@@ -20,7 +20,7 @@ public class GameRunner {
 		aGame.add("Sue");
 
 		if(isTest){
-			rand = new Random(5);
+			rand = new Random(Integer.parseInt(args[0]));
 		}
 
 		do {

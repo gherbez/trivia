@@ -1,5 +1,6 @@
 package com.adaptionsoft.games;
 
+import com.adaptionsoft.games.uglytrivia.AnotherGame;
 import com.adaptionsoft.games.uglytrivia.Game;
 import org.junit.Test;
 
@@ -42,12 +43,21 @@ public class GameTest {
         players.add("Toto");
         Game game = new Game(players);
 
+        //When
 
-
-        //When/then
+        //then
         for(int i =0; i < 5; i++){
             assertThat(game.wasCorrectlyAnswered()).isEqualTo(true);
         }
     }
 
+
+    @Test
+    public void shouldAddNewPlayerAndDisplayItsName(){
+        AnotherGame anotherGame = new AnotherGame();
+
+        anotherGame.add("toto");
+
+        assertThat(anotherGame.getConsoleOutPut().toString()).isEqualTo("toto was added They are player number 1 ");
+    }
 }
