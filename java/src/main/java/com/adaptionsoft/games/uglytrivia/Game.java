@@ -16,8 +16,18 @@ public class Game {
     
     int currentPlayer = 0;
     boolean isGettingOutOfPenaltyBox;
-    
-    public  Game(){
+
+	public Game(ArrayList players) {
+		this.players = players;
+		for (int i = 0; i < 50; i++) {
+			popQuestions.addLast("Pop Question " + i);
+			scienceQuestions.addLast(("Science Question " + i));
+			sportsQuestions.addLast(("Sports Question " + i));
+			rockQuestions.addLast(createRockQuestion(i));
+		}
+	}
+
+	public  Game(){
     	for (int i = 0; i < 50; i++) {
 			popQuestions.addLast("Pop Question " + i);
 			scienceQuestions.addLast(("Science Question " + i));
@@ -30,9 +40,9 @@ public class Game {
 		return "Rock Question " + index;
 	}
 	
-	public boolean isPlayable() {
-		return (howManyPlayers() >= 2);
-	}
+//	public boolean isPlayable() {
+//		return (howManyPlayers() >= 2);
+//	}
 
 	public boolean add(String playerName) {
 		
@@ -134,10 +144,12 @@ public class Game {
 			}
 			
 			
-			
+
+
+
 		} else {
 		
-			System.out.println("Answer was corrent!!!!");
+			System.out.println("Answer was correct!!!!");
 			purses[currentPlayer]++;
 			System.out.println(players.get(currentPlayer) 
 					+ " now has "
