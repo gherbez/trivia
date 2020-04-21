@@ -5,6 +5,8 @@ import java.util.LinkedList;
 
 public class Game {
 
+	private MessageInterface messageImpl;
+
 	public boolean add(String playerName) {
 		players.add(playerName);
 		places[howManyPlayers()] = 0;
@@ -17,7 +19,7 @@ public class Game {
 	}
 
 	protected void displayMessageOnConsole(String message) {
-		System.out.println(message);
+		messageImpl.display(message);
 	}
 
 
@@ -39,6 +41,10 @@ public class Game {
 	public Game(ArrayList players) {
 		this();
 		this.players = players;
+	}
+
+	public Game(MessageInterface messageInterface) {
+		this.messageImpl = messageInterface;
 	}
 
 	public  Game(){

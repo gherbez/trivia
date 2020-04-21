@@ -2,6 +2,7 @@ package com.adaptionsoft.games;
 
 import com.adaptionsoft.games.uglytrivia.AnotherGame;
 import com.adaptionsoft.games.uglytrivia.Game;
+import com.adaptionsoft.games.uglytrivia.MessageInterface;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 
 import static java.nio.file.Files.readAllBytes;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.*;
 
 
 public class GameTest {
@@ -59,5 +61,13 @@ public class GameTest {
         anotherGame.add("toto");
 
         assertThat(anotherGame.getConsoleOutPut().toString()).isEqualTo("toto was added They are player number 1 ");
+    }
+
+    @Test
+    public void shouldAddNewPlayerAndDisplayItsName2(){
+        MessageInterface messageInterface = mock(MessageInterface.class);
+        Game game = new Game(messageInterface);
+        game.add("Toto");
+        verify(messageInterface).display("Toto was added");
     }
 }
