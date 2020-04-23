@@ -2,6 +2,7 @@
 package com.adaptionsoft.games.runner;
 import java.util.Random;
 
+import com.adaptionsoft.games.uglytrivia.CategoriesService;
 import com.adaptionsoft.games.uglytrivia.Game;
 
 
@@ -13,11 +14,11 @@ public class GameRunner {
 	public static boolean isTest = false;
 
 	public static void main(String[] args) {
-		Game aGame = new Game();
+		Game aGame = new Game(new CategoriesService());
 		
-		aGame.add("Chet");
-		aGame.add("Pat");
-		aGame.add("Sue");
+		aGame.addPlayer("Chet");
+		aGame.addPlayer("Pat");
+		aGame.addPlayer("Sue");
 
 		if(isTest){
 			rand = new Random(Integer.parseInt(args[0]));
